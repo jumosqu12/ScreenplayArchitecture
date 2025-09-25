@@ -19,7 +19,6 @@ public class GitUtils {
                 }
                 System.out.println("Repo actualizado.");
             } else {
-
                 System.out.println("Clonando repo " + repoUrl + " en " + destination.getAbsolutePath());
                 Git.cloneRepository()
                         .setURI(repoUrl)

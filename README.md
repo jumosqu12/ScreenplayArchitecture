@@ -18,6 +18,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - [Plugin Implementation](#plugin-implementation)
 - [Tasks](#tasks)
      - [Clone Initializr](#clone-initializr)
+     - [Install Initializr](#install-initializr)
      - [Run Initializr](#run-initializr)
      - [Generate Project](#generate-project)
      - [Generate Features](#generate-features)
@@ -37,7 +38,7 @@ To use the [plugin](#) ensure you have Gradle version 8.6 or later. To get start
 
 ```groovy
 plugins {
-    id "io.github.jumosqu12.screenplayarchitecture" version "2.0.0"
+    id "io.github.jumosqu12.screenplayarchitecture" version "2.0.1"
 }
 ```
 
@@ -45,7 +46,7 @@ If it is a new project, execute this script in the root directory of your projec
 
 ```sh
 echo "plugins {
-  id \"io.github.jumosqu12.screenplayarchitecture\" version \"2.0.0\"
+  id \"io.github.jumosqu12.screenplayarchitecture\" version \"2.0.1\"
 }" > build.gradle
 ```
 
@@ -91,17 +92,24 @@ By default, the project will be cloned into the root directory where you run the
 gradle initializr 
 gradle ini
 ```
-## Run Initializr
+## Install Initializr
 
-The **` runInitializr | rini `** task executes the previously cloned Screenplay Initializr project.
-This task will start both the Express backend and the React frontend locally, simulating a production-like environment.
+The **` installInitializr | rinst `** task executes the previously cloned Screenplay Initializr project.
+This task will install node dependencies for the Express backend and the React frontend locally, simulating a production-like environment.
 
 Before running this task, make sure you have already cloned the Initializr project using the **`initializr | ini `**
 task.
 
 ```shell
-gradle runInitializr 
-gradle rini
+gradle installInitializr 
+gradle rinst
+```
+
+## Run Initializr
+
+After cloning and downloading the dependencies, this command is used to start the Initializr.
+```shell
+node initializr/dist/index.js 
 ```
 
 **`Recommendation:`** This command should be executed in a separate terminal window and kept active as long as you are using the Initializr project.

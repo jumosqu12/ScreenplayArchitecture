@@ -4,39 +4,49 @@ package co.com.bancolombia.tasks;
 import co.com.bancolombia.exceptions.ScreenPlayException;
 import co.com.bancolombia.tasks.annotations.CATask;
 import co.com.bancolombia.utils.Util;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
 
 @CATask(
-        name = "runInitializr",
-        shortCut = "rini",
-        description = "Execute ScreenPlay Architecture Initializr"
+        name = "installInitializr",
+        shortCut = "rinst",
+        description = "Install node Dependencies for ScreenPlay Architecture Initializr"
 )
 public class RunInitializr extends  AbstracScreenPlayArchitectureDefaultTask{
 
     @Override
     public void execute() throws IOException, ScreenPlayException {
         logger.lifecycle("ScreenPlay architecture plugin version: {}", Util.getVersionPlugin());
-        File baseDir = builder.getProject().getRootDir(); // raíz del proyecto donde se ejecuta el plugin
 
-        // Ejecutar Express
-        File serverDir = new File(baseDir, "initializr/dist");
-        ProcessBuilder express = new ProcessBuilder("node", "index.js");
-        express.directory(serverDir);
-        express.inheritIO(); // para ver los logs en la terminal
-        Process process = express.start();
+        File baseDir = builder.getProject().getRootDir();
+        File initializrDir = new File(baseDir, "initializr");
+        File nodeModules = new File(initializrDir, "node_modules");
 
-        logger.lifecycle("Initializr running: Express + React on  http://localhost:4000");
-        logger.lifecycle("Keep this terminal open while using the project.");
+        // Detectar comando npm según el SO
+        String npmCmd = System.getProperty("os.name").toLowerCase().contains("win")
+                ? "npm.cmd"
+                : "npm";
 
         try {
-            // Bloquea el hilo para que el proceso no muera
-            process.waitFor();
+            // 1. Instalar dependencias solo si no existen
+            if (!nodeModules.exists()) {
+                logger.lifecycle("Installing dependencies...");
+                ProcessBuilder install = new ProcessBuilder(npmCmd, "install", "--production");
+                install.directory(initializrDir);
+                install.inheritIO();
+                Process installProcess = install.start();
+                int exitCode = installProcess.waitFor();
+                if (exitCode != 0) {
+                    throw new ScreenPlayException("npm install failed with exit code " + exitCode);
+                }
+            }
+            logger.lifecycle("Dependencies installed successfully.");
+
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new ScreenPlayException("Error while running Express server");
+            throw new ScreenPlayException("Error while running npm install");
         }
     }
+
 }

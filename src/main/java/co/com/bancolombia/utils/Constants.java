@@ -27,7 +27,7 @@ public class Constants {
     }
 
     public static final String SCREENPLAY_ARCHITECTURE_INITIALIZR = "https://github.com/jumosqu12/screenplay_initializr.git";
-    public static final String PLUGIN_VERSION = "2.0.0";
+    public static final String PLUGIN_VERSION = "2.0.1";
     public static final String BUILD_GRADLE = "./build.gradle";
     public static final String CRITICAL_ROOT_NAME = "rutacritica";
     public static final String GRADLE_PROPERTIES = "/gradle.properties";
