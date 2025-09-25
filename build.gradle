@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'io.github.jumosqu12.screenplayarchitecture'
-version = '1.1.2'
+version = '2.0.0'
 
 gradlePlugin {
 
@@ -127,7 +127,8 @@ dependencies {
     api 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
     api 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.16.0'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.0'
-    implementation 'io.github.classgraph:classgraph:4.8.103'
+    implementation ("io.github.classgraph:classgraph:4.8.181")
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:6.9.0.202403050737-r'
 
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'

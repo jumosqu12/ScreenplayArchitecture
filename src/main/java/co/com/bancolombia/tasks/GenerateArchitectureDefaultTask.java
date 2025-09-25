@@ -43,7 +43,7 @@ public class GenerateArchitectureDefaultTask extends AbstracScreenPlayArchitectu
     private String principalPackage = "screen";
     private BooleanOption force = BooleanOption.FALSE;
     private Language language = Language.JAVA;
-    private int javaVersion = Constants.Java11;
+    private int javaVersion = Constants.Java17;
 
     @Option(option = "groupId", description = "Set group id to use in the project")
     public void setgroupId(String groupId) { this.groupId = groupId; }
@@ -86,7 +86,7 @@ public class GenerateArchitectureDefaultTask extends AbstracScreenPlayArchitectu
         builder.addParam("webDriverV", type.equals(ProjectType.UX) ? Constants.SERENITY_WEBDRIVER_VERSION:"");
         builder.addParam("webDriverLibrary", type.equals(ProjectType.UX) ? Constants.SERENITY_WEBDRIVER:"");
         builder.addParam("javaVersion", javaVersion);
-        builder.addParam("java11", javaVersion == Constants.Java11);
+        builder.addParam("java11", javaVersion == Constants.Java17);
         builder.addParam("remoteRepository", Constants.BANCOLOMBIA_REPOSITORIES);
         builder.addParam("serenityV", Constants.SERENITY_VERSION);
         builder.addParam("cucumberV",Constants.SERENITY_CUCUMBER_VERSION);
