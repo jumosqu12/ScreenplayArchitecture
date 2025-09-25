@@ -18,6 +18,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - [Plugin Implementation](#plugin-implementation)
 - [Tasks](#tasks)
      - [Clone Initializr](#clone-initializr)
+     - [Install Initializr](#install-initializr)
      - [Run Initializr](#run-initializr)
      - [Generate Project](#generate-project)
      - [Generate Features](#generate-features)
