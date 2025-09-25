@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        mavenLocal()
         mavenCentral()
     }
 }
@@ -14,10 +13,12 @@ plugins {
 
 group '{{groupId}}'
 
-sourceCompatibility = {{javaVersion}}
+java {
+    sourceCompatibility = JavaVersion.VERSION_{{javaVersion}}
+    targetCompatibility = JavaVersion.VERSION_{{javaVersion}}
+}
 
 repositories {
-
     mavenCentral()
 }
 

@@ -17,14 +17,16 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - [Scaffolding of ScreenPlay Architecture](#Scaffolding-of-ScreenPlay-Architecture)
 - [Plugin Implementation](#plugin-implementation)
 - [Tasks](#tasks)
-    - [Generate Project](#generate-project)
-    - [Generate Features](#generate-features)
-    - [Generate Runners](#generate-runners)
-    - [Generate Rest Interaction](#generate-rest-interaction)
-    - [Generate Tasks](#generate-tasks)
-    - [Generate Pipeline](#generate-pipeline)
-    - [Generate Database connection](#generate-database-connection)
-    - [Generate Critical Root](#generate-critical-root)
+     - [Clone Initializr](#clone-initializr)
+     - [Run Initializr](#run-initializr)
+     - [Generate Project](#generate-project)
+     - [Generate Features](#generate-features)
+     - [Generate Runners](#generate-runners)
+     - [Generate Rest Interaction](#generate-rest-interaction)
+     - [Generate Tasks](#generate-tasks)
+     - [Generate Pipeline](#generate-pipeline)
+     - [Generate Database connection](#generate-database-connection)
+     - [Generate Critical Root](#generate-critical-root)
 - [How can I help?](#how-can-i-help)
 - [What's Next?](#whats-next)
 
@@ -35,7 +37,7 @@ To use the [plugin](#) ensure you have Gradle version 8.6 or later. To get start
 
 ```groovy
 plugins {
-    id "io.github.jumosqu12.screenplayarchitecture" version "1.1.2"
+    id "io.github.jumosqu12.screenplayarchitecture" version "2.0.0"
 }
 ```
 
@@ -43,16 +45,67 @@ If it is a new project, execute this script in the root directory of your projec
 
 ```sh
 echo "plugins {
-  id \"io.github.jumosqu12.screenplayarchitecture\" version \"1.1.2\"
+  id \"io.github.jumosqu12.screenplayarchitecture\" version \"2.0.0\"
 }" > build.gradle
 ```
 
 # How do it?
 <img src="./assets/Frame1CreateProject.gif" alt="Demostración del uso" width="80%"/>
 
+The Screenplay Architecture Plugin can be used in two different ways, depending on your needs:
+
+Using the Initializr (**`initializr | ini `** & **` runInitializr | rini `**)
+
+- This mode provides a ready-to-use React + Express base project automatically cloned and configured in your local environment.
+- It saves time by avoiding manual setup of folder structures and boilerplate code.
+- You can directly start coding with a consistent and standardized project structure.
+
+Executing Commands from the Console (**`screenPlayArchitecture | spa`**)
+
+- This mode allows you to generate the Screenplay Architecture directly into an existing project using Gradle commands.
+- Ideal for cases where you already have a Java project and want to integrate the Screenplay structure into it.
+
+Combining Both Approaches
+
+- You can generate a React + Express base project with the Initializr, and at the same time enrich your Java backend with the Screenplay Architecture structure via console commands.
+
+Security and Local Execution
+
+- The plugin runs entirely in your local environment.
+- It does not establish any external connection other than cloning or updating the repository you specify (by default the official Initializr repo).
+- This means your data, credentials, and project files remain secure and private.
+
 # Tasks
 
-The Scaffolding Screenplay Architecture plugin enables you to run 8 tasks:
+The Scaffolding Screenplay Architecture plugin enables you to run 10 tasks:
+
+## Clone Initializr
+
+The **`initializr | ini `** task clones or updates the Screenplay Initializr project into your current working directory.
+This task automatically downloads the base structure for React and Express projects from the GitHub repository.
+
+If the repository already exists locally, the task will update it (using git pull) instead of cloning again.
+By default, the project will be cloned into the root directory where you run the Gradle command.
+
+```shell
+gradle initializr 
+gradle ini
+```
+## Run Initializr
+
+The **` runInitializr | rini `** task executes the previously cloned Screenplay Initializr project.
+This task will start both the Express backend and the React frontend locally, simulating a production-like environment.
+
+Before running this task, make sure you have already cloned the Initializr project using the **`initializr | ini `**
+task.
+
+```shell
+gradle runInitializr 
+gradle rini
+```
+
+**`Recommendation:`** This command should be executed in a separate terminal window and kept active as long as you are using the Initializr project.
+Closing the terminal will stop both the backend (Express) and the frontend (React).
 
 ## Generate Project
 

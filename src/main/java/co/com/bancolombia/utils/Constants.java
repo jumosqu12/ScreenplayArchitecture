@@ -1,7 +1,5 @@
 package co.com.bancolombia.utils;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -21,14 +19,15 @@ public class Constants {
         KOTLIN
     }
 
-    public static final int Java11 = 11;
+    public static final int Java17 = 17;
 
     public enum ProjectType {
         REST,
         UX
     }
 
-    public static final String PLUGIN_VERSION = "1.1.2";
+    public static final String SCREENPLAY_ARCHITECTURE_INITIALIZR = "https://github.com/jumosqu12/screenplay_initializr.git";
+    public static final String PLUGIN_VERSION = "2.0.0";
     public static final String BUILD_GRADLE = "./build.gradle";
     public static final String CRITICAL_ROOT_NAME = "rutacritica";
     public static final String GRADLE_PROPERTIES = "/gradle.properties";
